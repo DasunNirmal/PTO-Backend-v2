@@ -1,5 +1,5 @@
 package lk.ijse.ptobackendv2.dto;
 
-public interface CustomerDto {
+public interface SuperDto {
 
 }
