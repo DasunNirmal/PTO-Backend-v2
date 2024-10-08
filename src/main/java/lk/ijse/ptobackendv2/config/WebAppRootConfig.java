@@ -1,6 +1,7 @@
 package lk.ijse.ptobackendv2.config;
 
 import jakarta.persistence.EntityManagerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,10 +21,14 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 public class WebAppRootConfig {
     @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
+    @Bean
     public DataSource dataSource() {
         var dbms = new DriverManagerDataSource();
         dbms.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dbms.setUrl("jdbc:mysql://localhost:3306/PTO?createDatabaseIfNotExist=true");
+        dbms.setUrl("jdbc:mysql://localhost:3306/PTO_V2?createDatabaseIfNotExist=true");
         dbms.setUsername("root");
         dbms.setPassword("Ijse@1234");
         return dbms;
@@ -37,7 +42,7 @@ public class WebAppRootConfig {
         /*this means that this project is using JPA or in other words bootstrap by JPA*/
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("lk.ijse.notescollector.entity.impl");
+        factory.setPackagesToScan("lk.ijse.ptobackendv2.entity.impl");
         factory.setDataSource(dataSource());
         return factory;
     }
