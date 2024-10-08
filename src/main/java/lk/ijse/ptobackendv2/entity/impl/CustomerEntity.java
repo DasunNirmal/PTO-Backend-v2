@@ -1,4 +1,20 @@
 package lk.ijse.ptobackendv2.entity.impl;
 
-public class CustomerEntity {
+import jakarta.persistence.*;
+import lk.ijse.ptobackendv2.entity.SuperEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Entity
+@Table(name = "Customer")
+public class CustomerEntity implements SuperEntity {
+    @Id
+    private String customerID;
+    private String customerName;
+    private String customerAddress;
+    private String customerPhoneNumber;
 }
