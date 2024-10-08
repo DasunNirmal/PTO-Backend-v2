@@ -32,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<CustomerDto> getAllCustomers() {
+    public List<CustomerDto> loadAllCustomers() {
         return mapping.toCustomerDtoList(customerDao.findAll());
     }
 
