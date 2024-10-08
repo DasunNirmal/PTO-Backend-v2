@@ -7,4 +7,5 @@ import java.util.List;
 public interface ItemService {
     void saveItem(ItemDto itemDto);
     List<ItemDto> loadAllItems();
+    void deleteItems(String itemID);
 }
