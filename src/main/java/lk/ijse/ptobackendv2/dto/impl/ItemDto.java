@@ -1,4 +1,7 @@
 package lk.ijse.ptobackendv2.dto.impl;
 
-public class ItemDto {
+import lk.ijse.ptobackendv2.dto.ItemStatus;
+import lk.ijse.ptobackendv2.dto.SuperDto;
+
+public class ItemDto implements SuperDto, ItemStatus {
 }
