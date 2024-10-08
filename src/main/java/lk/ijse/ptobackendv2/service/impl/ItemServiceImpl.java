@@ -1,4 +1,6 @@
 package lk.ijse.ptobackendv2.service.impl;
 
-public class ItemServiceImpl {
+import lk.ijse.ptobackendv2.service.ItemService;
+
+public class ItemServiceImpl implements ItemService {
 }
