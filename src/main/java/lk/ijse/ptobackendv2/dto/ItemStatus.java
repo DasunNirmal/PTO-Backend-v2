@@ -1,4 +1,6 @@
 package lk.ijse.ptobackendv2.dto;
 
-public interface ItemStatus {
+import java.io.Serializable;
+
+public interface ItemStatus extends Serializable, SuperDto{
 }
