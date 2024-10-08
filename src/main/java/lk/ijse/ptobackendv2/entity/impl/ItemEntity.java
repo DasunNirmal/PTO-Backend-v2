@@ -1,4 +1,6 @@
 package lk.ijse.ptobackendv2.entity.impl;
 
-public class ItemEntity {
+import lk.ijse.ptobackendv2.entity.SuperEntity;
+
+public class ItemEntity implements SuperEntity {
 }
