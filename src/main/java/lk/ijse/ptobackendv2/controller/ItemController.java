@@ -1,8 +1,10 @@
 package lk.ijse.ptobackendv2.controller;
 
-import lk.ijse.ptobackendv2.dto.impl.CustomerDto;
 import lk.ijse.ptobackendv2.dto.impl.ItemDto;
+import lk.ijse.ptobackendv2.entity.impl.CustomerEntity;
+import lk.ijse.ptobackendv2.exception.CustomerNotFoundException;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
+import lk.ijse.ptobackendv2.exception.ItemNotFoundException;
 import lk.ijse.ptobackendv2.service.ItemService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
@@ -42,5 +45,19 @@ public class ItemController {
     public List<ItemDto> getAllItems() {
         logger.info("GET Request Received");
         return itemService.loadAllItems();
+    }
+
+    @DeleteMapping(value = "/{itemID}")
+    public ResponseEntity<Void> deleteItems(@PathVariable("itemID") String itemID) {
+        logger.info("DELETE Request Received");
+        try {
+            itemService.deleteItems(itemID);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (ItemNotFoundException e) {
+            logger.error("Item not found: ", e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
