@@ -42,7 +42,7 @@ public class CustomerController {
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public List<CustomerDto> getAllCustomers() {
         logger.info("GET Request Received");
-        return customerService.getAllCustomers();
+        return customerService.loadAllCustomers();
     }
 
     @GetMapping(value = "/{customerID}", produces = MediaType.APPLICATION_JSON_VALUE)
