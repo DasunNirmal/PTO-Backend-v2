@@ -1,9 +1,6 @@
 package lk.ijse.ptobackendv2.controller;
 
-import lk.ijse.ptobackendv2.dto.impl.CustomerDto;
 import lk.ijse.ptobackendv2.dto.impl.ItemDto;
-import lk.ijse.ptobackendv2.entity.impl.CustomerEntity;
-import lk.ijse.ptobackendv2.exception.CustomerNotFoundException;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
 import lk.ijse.ptobackendv2.exception.ItemNotFoundException;
 import lk.ijse.ptobackendv2.service.ItemService;
@@ -16,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:63342")
 @RestController
