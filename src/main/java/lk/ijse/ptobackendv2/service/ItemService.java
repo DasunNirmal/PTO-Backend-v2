@@ -8,4 +8,6 @@ public interface ItemService {
     void saveItem(ItemDto itemDto);
     List<ItemDto> loadAllItems();
     void deleteItems(String itemID);
+    void updateItems(String itemID, ItemDto itemDto);
+    ItemDto searchItems(String itemID);
 }
