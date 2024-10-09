@@ -1,5 +1,6 @@
 package lk.ijse.ptobackendv2.controller;
 
+import lk.ijse.ptobackendv2.dto.impl.CustomerDto;
 import lk.ijse.ptobackendv2.dto.impl.ItemDto;
 import lk.ijse.ptobackendv2.entity.impl.CustomerEntity;
 import lk.ijse.ptobackendv2.exception.CustomerNotFoundException;
@@ -47,11 +48,31 @@ public class ItemController {
         return itemService.loadAllItems();
     }
 
+    @GetMapping(value = "/{itemID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ItemDto searchItemByID(@PathVariable("itemID") String itemID) {
+        logger.info("GET Request Received For Search Item By ID");
+        return itemService.searchItems(itemID);
+    }
+
     @DeleteMapping(value = "/{itemID}")
     public ResponseEntity<Void> deleteItems(@PathVariable("itemID") String itemID) {
         logger.info("DELETE Request Received");
         try {
             itemService.deleteItems(itemID);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (ItemNotFoundException e) {
+            logger.error("Item not found: ", e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @PatchMapping(value = "/{itemID}")
+    public ResponseEntity<Void> updateItem(@PathVariable("itemID") String itemID, @RequestBody ItemDto itemDto) {
+        logger.info("PATCH Request Received");
+        try {
+            itemService.updateItems(itemID, itemDto);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (ItemNotFoundException e) {
             logger.error("Item not found: ", e);
