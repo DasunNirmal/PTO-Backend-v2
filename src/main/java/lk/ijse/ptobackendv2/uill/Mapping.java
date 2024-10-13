@@ -1,10 +1,7 @@
 package lk.ijse.ptobackendv2.uill;
 
 import lk.ijse.ptobackendv2.dao.ItemDao;
-import lk.ijse.ptobackendv2.dto.impl.CustomerDto;
-import lk.ijse.ptobackendv2.dto.impl.ItemDto;
-import lk.ijse.ptobackendv2.dto.impl.OrderDetailsDto;
-import lk.ijse.ptobackendv2.dto.impl.OrderDto;
+import lk.ijse.ptobackendv2.dto.impl.*;
 import lk.ijse.ptobackendv2.entity.impl.CustomerEntity;
 import lk.ijse.ptobackendv2.entity.impl.ItemEntity;
 import lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity;
@@ -68,5 +65,9 @@ public class Mapping {
 
     public List<OrderDetailsDto> toOrderDetailsDtoList(List<OrderDetailsEntity> orderDetailsEntities) {
         return modelMapper.map(orderDetailsEntities, new TypeToken<List<OrderDetailsDto>>() {}.getType());
+    }
+
+    public List<CombinedOrderDto> toOrderDetailsDtoLists(List<OrderDetailsEntity> orderDetailsEntities) {
+        return modelMapper.map(orderDetailsEntities, new TypeToken<List<CombinedOrderDto>>() {}.getType());
     }
 }
