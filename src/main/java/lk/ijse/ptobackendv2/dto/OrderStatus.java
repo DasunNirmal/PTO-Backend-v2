@@ -1,4 +1,6 @@
 package lk.ijse.ptobackendv2.dto;
 
-public class OrderStatus {
+import java.io.Serializable;
+
+public interface OrderStatus extends Serializable, SuperDto {
 }
