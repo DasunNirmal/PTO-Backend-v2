@@ -20,6 +20,6 @@ public class OrderEntity implements SuperEntity {
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "customerID",nullable = true)
     private CustomerEntity customer;
-    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "order")
     private List<OrderDetailsEntity> orderDetails;
 }
