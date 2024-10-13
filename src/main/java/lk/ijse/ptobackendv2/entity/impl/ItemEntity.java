@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -18,4 +20,6 @@ public class ItemEntity implements SuperEntity {
     private String itemName;
     private double itemPrice;
     private int itemQty;
+    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private List<OrderDetailsEntity> orderDetailsEntities;
 }
