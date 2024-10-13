@@ -1,10 +1,9 @@
 package lk.ijse.ptobackendv2.controller;
 
 import lk.ijse.ptobackendv2.dto.impl.CombinedOrderDto;
-import lk.ijse.ptobackendv2.dto.impl.ItemDto;
-import lk.ijse.ptobackendv2.dto.impl.OrderDetailsDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDto;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
+import lk.ijse.ptobackendv2.exception.ItemNotFoundException;
 import lk.ijse.ptobackendv2.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,5 +49,19 @@ public class OrderController {
     public List<CombinedOrderDto> getAllItems() {
         logger.info("GET Request Received");
         return orderService.loadAllOrders();
+    }
+
+    @DeleteMapping(value = "/{orderID}/{itemID}/{orderQty}")
+    public ResponseEntity<Void> deleteItems(@PathVariable("orderID") String orderID, @PathVariable("itemID") String itemID, @PathVariable("orderQty") int orderQty) {
+        logger.info("DELETE Request Received");
+        try {
+            orderService.deleteItems(orderID,itemID,orderQty);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (ItemNotFoundException e) {
+            logger.error("Item not found: ", e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
