@@ -1,4 +1,6 @@
 package lk.ijse.ptobackendv2.dto;
 
-public interface CombinedOrder {
+import java.io.Serializable;
+
+public interface CombinedOrderStatus extends Serializable, SuperDto {
 }
