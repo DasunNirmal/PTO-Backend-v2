@@ -24,7 +24,7 @@ public class OrderDetailsEntity implements SuperEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "orderID",referencedColumnName = "orderID")
     private OrderEntity order;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "itemID",referencedColumnName = "itemID")
     private ItemEntity item;
 }
