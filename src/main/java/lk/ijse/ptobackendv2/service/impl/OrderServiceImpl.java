@@ -4,15 +4,20 @@ import lk.ijse.ptobackendv2.dao.OrderDao;
 
 import lk.ijse.ptobackendv2.dao.OrderDetailsDao;
 import lk.ijse.ptobackendv2.dto.impl.CombinedOrderDto;
+import lk.ijse.ptobackendv2.dto.impl.ItemDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDetailsDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDto;
+import lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity;
 import lk.ijse.ptobackendv2.entity.impl.OrderEntity;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
+import lk.ijse.ptobackendv2.service.ItemService;
 import lk.ijse.ptobackendv2.service.OrderService;
 import lk.ijse.ptobackendv2.uill.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Transactional
@@ -22,6 +27,8 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderDetailsDao orderDetailsDao;
     @Autowired
+    private ItemService itemService;
+    @Autowired
     private Mapping mapping;
 
     @Override
@@ -30,22 +37,46 @@ public class OrderServiceImpl implements OrderService {
         if (orderEntity == null) {
             throw new DataPersistException("Order Not Saved");
         } else {
-            OrderDetailsDto dto = new OrderDetailsDto();
-            dto.setDetailsID(orderDto.getOrderID());
-            dto.setOrderID(orderDto);
-            dto.setItemID(combinedOrderDto.getItemID());
-            dto.setItemName(combinedOrderDto.getItemName());
-            dto.setItemPrice(combinedOrderDto.getItemPrice());
-            dto.setItemQty(combinedOrderDto.getItemQty());
-            dto.setOrderQty(combinedOrderDto.getOrderQty());
-            dto.setOrderDate(combinedOrderDto.getOrderDate());
-            dto.setCustomerID(combinedOrderDto.getCustomerID());
-            dto.setTotalPrice(combinedOrderDto.getTotalPrice());
-            saveOrderDetails(dto);
+            OrderDetailsDto dto = getOrderDetailsDto(orderDto, combinedOrderDto);
+            boolean isSaved = saveOrderDetails(dto);
+            if (isSaved) {
+                ItemDto itemDto = itemService.searchItems(combinedOrderDto.getItemID());
+                int newQty = itemDto.getItemQty() - combinedOrderDto.getOrderQty();
+                if (newQty < 0) {
+                    throw new IllegalArgumentException("Insufficient item quantity.");
+                }
+                itemDto.setItemQty(newQty);
+                itemService.updateItems(combinedOrderDto.getItemID(),itemDto);
+            }
         }
     }
 
-    private void saveOrderDetails(OrderDetailsDto orderDetailsDto) {
-        orderDetailsDao.save(mapping.toOrderDetailsEntity(orderDetailsDto));
+    @Override
+    public List<CombinedOrderDto> loadAllOrders() {
+        return mapping.toOrderDetailsDtoLists(orderDetailsDao.findAll());
+    }
+
+    private boolean saveOrderDetails(OrderDetailsDto orderDetailsDto) {
+        OrderDetailsEntity save = orderDetailsDao.save(mapping.toOrderDetailsEntity(orderDetailsDto));
+        if (save == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private static OrderDetailsDto getOrderDetailsDto(OrderDto orderDto, CombinedOrderDto combinedOrderDto) {
+        OrderDetailsDto dto = new OrderDetailsDto();
+        dto.setDetailsID(orderDto.getOrderID());
+        dto.setOrderID(orderDto);
+        dto.setItemID(combinedOrderDto.getItemID());
+        dto.setItemName(combinedOrderDto.getItemName());
+        dto.setItemPrice(combinedOrderDto.getItemPrice());
+        dto.setItemQty(combinedOrderDto.getItemQty());
+        dto.setOrderQty(combinedOrderDto.getOrderQty());
+        dto.setOrderDate(combinedOrderDto.getOrderDate());
+        dto.setCustomerID(combinedOrderDto.getCustomerID());
+        dto.setTotalPrice(combinedOrderDto.getTotalPrice());
+        return dto;
     }
 }
