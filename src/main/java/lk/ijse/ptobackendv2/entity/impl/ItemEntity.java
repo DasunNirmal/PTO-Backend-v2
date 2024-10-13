@@ -20,6 +20,6 @@ public class ItemEntity implements SuperEntity {
     private String itemName;
     private double itemPrice;
     private int itemQty;
-    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "item")
     private List<OrderDetailsEntity> orderDetailsEntities;
 }
