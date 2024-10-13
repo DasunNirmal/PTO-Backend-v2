@@ -10,6 +10,7 @@ import lk.ijse.ptobackendv2.dto.impl.OrderDto;
 import lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity;
 import lk.ijse.ptobackendv2.entity.impl.OrderEntity;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
+import lk.ijse.ptobackendv2.exception.OrderNotFoundException;
 import lk.ijse.ptobackendv2.service.ItemService;
 import lk.ijse.ptobackendv2.service.OrderService;
 import lk.ijse.ptobackendv2.uill.Mapping;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -54,6 +56,27 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<CombinedOrderDto> loadAllOrders() {
         return mapping.toOrderDetailsDtoLists(orderDetailsDao.findAll());
+    }
+
+    @Override
+    public void deleteItems(String orderID, String itemID, int orderQty) {
+        Optional<OrderDetailsEntity> odIdFound = orderDetailsDao.findById(orderID);
+        Optional<OrderEntity> oIdFound = orderDao.findById(orderID);
+        if (odIdFound.isEmpty()) {
+            throw new OrderNotFoundException("Order Not Found");
+        }
+        orderDetailsDao.deleteById(orderID);
+        if (oIdFound.isEmpty()) {
+            throw new OrderNotFoundException("Order Not Found");
+        }
+        orderDao.deleteById(orderID);
+        ItemDto itemDto = itemService.searchItems(itemID);
+        int newQty = itemDto.getItemQty() + orderQty;
+        if (newQty < 0) {
+            throw new IllegalArgumentException("Insufficient item quantity.");
+        }
+        itemDto.setItemQty(newQty);
+        itemService.updateItems(itemID,itemDto);
     }
 
     private boolean saveOrderDetails(OrderDetailsDto orderDetailsDto) {
