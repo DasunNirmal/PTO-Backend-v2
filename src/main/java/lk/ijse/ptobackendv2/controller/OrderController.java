@@ -1,6 +1,8 @@
 package lk.ijse.ptobackendv2.controller;
 
 import lk.ijse.ptobackendv2.dto.impl.CombinedOrderDto;
+import lk.ijse.ptobackendv2.dto.impl.ItemDto;
+import lk.ijse.ptobackendv2.dto.impl.OrderDetailsDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDto;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
 import lk.ijse.ptobackendv2.service.OrderService;
@@ -11,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @CrossOrigin(origins = "http://localhost:63342")
@@ -40,5 +44,11 @@ public class OrderController {
             logger.error("Internal server error: ", e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<CombinedOrderDto> getAllItems() {
+        logger.info("GET Request Received");
+        return orderService.loadAllOrders();
     }
 }
