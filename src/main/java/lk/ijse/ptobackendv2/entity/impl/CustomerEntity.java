@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -17,4 +19,6 @@ public class CustomerEntity implements SuperEntity {
     private String customerName;
     private String customerAddress;
     private String customerPhoneNumber;
+    @OneToMany(mappedBy = "customer")
+    private List<OrderEntity> orders;
 }
