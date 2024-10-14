@@ -1,7 +1,6 @@
 package lk.ijse.ptobackendv2.controller;
 
 import lk.ijse.ptobackendv2.dto.impl.CombinedOrderDto;
-import lk.ijse.ptobackendv2.dto.impl.ItemDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDto;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
 import lk.ijse.ptobackendv2.exception.ItemNotFoundException;
