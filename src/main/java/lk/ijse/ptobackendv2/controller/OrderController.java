@@ -1,6 +1,7 @@
 package lk.ijse.ptobackendv2.controller;
 
 import lk.ijse.ptobackendv2.dto.impl.CombinedOrderDto;
+import lk.ijse.ptobackendv2.dto.impl.ItemDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDto;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
 import lk.ijse.ptobackendv2.exception.ItemNotFoundException;
@@ -56,6 +57,26 @@ public class OrderController {
         logger.info("DELETE Request Received");
         try {
             orderService.deleteItems(orderID,itemID,orderQty);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (ItemNotFoundException e) {
+            logger.error("Item not found: ", e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping(value = "/{orderID}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public CombinedOrderDto searchOrderByID(@PathVariable("orderID") String orderID) {
+        logger.info("GET Request Received For Search Order By ID");
+        return orderService.searchOrders(orderID);
+    }
+
+    @PatchMapping(value = "/{orderID}/{itemID}/{qtyOnHand}")
+    public ResponseEntity<Void> updateOrder(@PathVariable("orderID") String orderID, @PathVariable("itemID") String itemID, @PathVariable("qtyOnHand") int qtyOnHand, @RequestBody CombinedOrderDto combinedOrderDto) {
+        logger.info("PATCH Request Received");
+        try {
+            orderService.updateOrder(orderID, itemID, qtyOnHand, combinedOrderDto);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (ItemNotFoundException e) {
             logger.error("Item not found: ", e);
