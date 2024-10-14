@@ -9,4 +9,6 @@ public interface OrderService {
     void saveOrder(OrderDto orderDto, CombinedOrderDto combinedOrderDto);
     List<CombinedOrderDto> loadAllOrders();
     void deleteItems(String orderID, String itemID, int orderQty);
+    CombinedOrderDto searchOrders(String orderID);
+    void updateOrder(String orderID, String itemID, int qtyOnHand, CombinedOrderDto combinedOrderDto);
 }
