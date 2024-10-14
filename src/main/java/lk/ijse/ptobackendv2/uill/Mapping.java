@@ -59,8 +59,8 @@ public class Mapping {
     public OrderDetailsEntity toOrderDetailsEntity(OrderDetailsDto orderDetailsDto) {
         return modelMapper.map(orderDetailsDto, OrderDetailsEntity.class);
     }
-    public OrderDetailsDto toOrderDetailsDto(OrderDetailsEntity orderDetailsEntity) {
-        return modelMapper.map(orderDetailsEntity, OrderDetailsDto.class);
+    public CombinedOrderDto toOrderDetailsDto(OrderDetailsEntity orderDetailsEntity) {
+        return modelMapper.map(orderDetailsEntity, CombinedOrderDto.class);
     }
 
     public List<OrderDetailsDto> toOrderDetailsDtoList(List<OrderDetailsEntity> orderDetailsEntities) {
