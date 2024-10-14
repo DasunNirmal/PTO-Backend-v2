@@ -1,5 +1,6 @@
 package lk.ijse.ptobackendv2.service.impl;
 
+import lk.ijse.ptobackendv2.dao.ItemDao;
 import lk.ijse.ptobackendv2.dao.OrderDao;
 
 import lk.ijse.ptobackendv2.dao.OrderDetailsDao;
@@ -7,9 +8,11 @@ import lk.ijse.ptobackendv2.dto.impl.CombinedOrderDto;
 import lk.ijse.ptobackendv2.dto.impl.ItemDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDetailsDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDto;
+import lk.ijse.ptobackendv2.entity.impl.ItemEntity;
 import lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity;
 import lk.ijse.ptobackendv2.entity.impl.OrderEntity;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
+import lk.ijse.ptobackendv2.exception.ItemNotFoundException;
 import lk.ijse.ptobackendv2.exception.OrderNotFoundException;
 import lk.ijse.ptobackendv2.service.ItemService;
 import lk.ijse.ptobackendv2.service.OrderService;
@@ -30,6 +33,8 @@ public class OrderServiceImpl implements OrderService {
     private OrderDetailsDao orderDetailsDao;
     @Autowired
     private ItemService itemService;
+    @Autowired
+    private ItemDao itemDao;
     @Autowired
     private Mapping mapping;
 
@@ -77,6 +82,43 @@ public class OrderServiceImpl implements OrderService {
         }
         itemDto.setItemQty(newQty);
         itemService.updateItems(itemID,itemDto);
+    }
+
+    @Override
+    public CombinedOrderDto searchOrders(String orderID) {
+        if (orderDetailsDao.existsById(orderID)) {
+            OrderDetailsEntity order = orderDetailsDao.getReferenceById(orderID);
+            return mapping.toOrderDetailsDto(order);
+        } else {
+            throw new OrderNotFoundException("Order Not Found");
+        }
+    }
+
+    @Override
+    public void updateOrder(String orderID, String itemID, int qtyOnHand, CombinedOrderDto combinedOrderDto) {
+        Optional<OrderDetailsEntity> orderFound = orderDetailsDao.findById(orderID);
+        if (orderFound.isEmpty()) {
+            throw new OrderNotFoundException("Order Not Found");
+        } else {
+            OrderDetailsEntity orderDetails = orderFound.get();
+            orderDetails.setCustomerID(combinedOrderDto.getCustomerID());
+            orderDetails.setItemName(combinedOrderDto.getItemName());
+            orderDetails.setItemPrice(combinedOrderDto.getItemPrice());
+            orderDetails.setItemQty(qtyOnHand);
+            orderDetails.setOrderDate(combinedOrderDto.getOrderDate());
+            orderDetails.setOrderQty(combinedOrderDto.getOrderQty());
+            orderDetails.setTotalPrice(combinedOrderDto.getTotalPrice());
+
+            Optional<ItemEntity> existingItem = itemDao.findById(itemID);
+            if (existingItem.isPresent()) {
+                orderDetails.setItem(existingItem.get());
+            } else {
+                throw new ItemNotFoundException("Item Not Found");
+            }
+            ItemDto itemDto = itemService.searchItems(itemID);
+            itemDto.setItemQty(qtyOnHand);
+            itemService.updateItems(itemID, itemDto);
+        }
     }
 
     private boolean saveOrderDetails(OrderDetailsDto orderDetailsDto) {
