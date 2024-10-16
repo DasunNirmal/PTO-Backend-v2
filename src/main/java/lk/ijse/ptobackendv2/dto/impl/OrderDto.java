@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -15,5 +13,4 @@ public class OrderDto implements SuperDto, OrderStatus {
     private String orderID;
     private String orderDate;
     private String customerID;
-    /*private List<OrderDetailsDto> orderDetails;*/
 }
