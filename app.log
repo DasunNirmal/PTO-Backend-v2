@@ -1,0 +1,267 @@
+19:10:26.827 [http-nio-8081-exec-4] DEBUG o.s.web.servlet.DispatcherServlet -- GET "/PTOBackendv2/api/v2/itemController?itemID=1", parameters={masked}
+19:10:26.828 [http-nio-8081-exec-4] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping -- Mapped to lk.ijse.ptobackendv2.controller.ItemController#getAllItems()
+19:10:26.829 [http-nio-8081-exec-4] INFO  l.i.p.controller.ItemController -- GET Request Received
+19:10:26.829 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager -- Creating new transaction with name [lk.ijse.ptobackendv2.service.impl.ItemServiceImpl.loadAllItems]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+19:10:26.829 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager -- Opened new EntityManager [SessionImpl(481320894<open>)] for JPA transaction
+19:10:26.829 [http-nio-8081-exec-4] DEBUG o.h.e.t.internal.TransactionImpl -- On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+19:10:26.829 [http-nio-8081-exec-4] DEBUG o.h.e.t.internal.TransactionImpl -- begin
+19:10:26.829 [http-nio-8081-exec-4] DEBUG o.s.j.d.DriverManagerDataSource -- Creating new JDBC DriverManager Connection to [jdbc:mysql://localhost:3306/PTO_V2?createDatabaseIfNotExist=true]
+19:10:26.863 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager -- Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@164834ce]
+19:10:26.863 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(481320894<open>)] for JPA transaction
+19:10:26.863 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:26.864 [http-nio-8081-exec-4] DEBUG org.hibernate.orm.sql.ast.create -- Created new SQL alias : ie1_0
+19:10:26.864 [http-nio-8081-exec-4] DEBUG org.hibernate.orm.sql.ast.create -- Registration of TableGroup [StandardTableGroup(lk.ijse.ptobackendv2.entity.impl.ItemEntity(10))] with identifierForTableGroup [lk.ijse.ptobackendv2.entity.impl.ItemEntity] for NavigablePath [lk.ijse.ptobackendv2.entity.impl.ItemEntity] 
+19:10:26.865 [http-nio-8081-exec-4] DEBUG org.hibernate.orm.results.graph.AST -- DomainResult Graph:
+ \-EntityResultImpl [lk.ijse.ptobackendv2.entity.impl.ItemEntity(10)]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.ItemEntity(10).itemName]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.ItemEntity(10).itemPrice]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.ItemEntity(10).itemQty]
+ |  \-DelayedCollectionFetch [lk.ijse.ptobackendv2.entity.impl.ItemEntity(10).orderDetailsEntities]
+
+19:10:26.865 [http-nio-8081-exec-4] DEBUG org.hibernate.orm.sql.ast.tree -- SQL AST Tree:
+    SelectStatement {
+      FromClause {
+        StandardTableGroup (ie1 : lk.ijse.ptobackendv2.entity.impl.ItemEntity(10)) {
+          primaryTableReference : Items as ie1_0
+        }
+      }
+    }
+
+19:10:26.865 [http-nio-8081-exec-4] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+19:10:26.865 [http-nio-8081-exec-4] DEBUG org.hibernate.SQL -- select ie1_0.itemID,ie1_0.itemName,ie1_0.itemPrice,ie1_0.itemQty from Items ie1_0
+19:10:26.869 [http-nio-8081-exec-4] DEBUG org.hibernate.orm.results -- Initializer list:
+	  lk.ijse.ptobackendv2.entity.impl.ItemEntity(10).orderDetailsEntities -> DelayedCollectionInitializer(lk.ijse.ptobackendv2.entity.impl.ItemEntity(10).orderDetailsEntities)@1277443856 (PluralAttribute(lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities))
+	  lk.ijse.ptobackendv2.entity.impl.ItemEntity(10) -> EntityJoinedFetchInitializer(lk.ijse.ptobackendv2.entity.impl.ItemEntity(10))@787412542 (SingleTableEntityPersister(lk.ijse.ptobackendv2.entity.impl.ItemEntity))
+
+19:10:26.870 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager -- Initiating transaction commit
+19:10:26.870 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager -- Committing JPA transaction on EntityManager [SessionImpl(481320894<open>)]
+19:10:26.870 [http-nio-8081-exec-4] DEBUG o.h.e.t.internal.TransactionImpl -- committing
+19:10:26.870 [http-nio-8081-exec-4] DEBUG o.h.e.i.AbstractFlushingEventListener -- Processing flush-time cascades
+19:10:26.870 [http-nio-8081-exec-4] DEBUG o.h.e.i.AbstractFlushingEventListener -- Dirty checking collections
+19:10:26.870 [http-nio-8081-exec-4] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#1], was: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#1] (uninitialized)
+19:10:26.870 [http-nio-8081-exec-4] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#2], was: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#2] (uninitialized)
+19:10:26.871 [http-nio-8081-exec-4] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 0 insertions, 0 updates, 0 deletions to 2 objects
+19:10:26.871 [http-nio-8081-exec-4] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 0 (re)creations, 0 updates, 0 removals to 2 collections
+19:10:26.871 [http-nio-8081-exec-4] DEBUG o.h.internal.util.EntityPrinter -- Listing entities:
+19:10:26.871 [http-nio-8081-exec-4] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.ItemEntity{itemID=2, itemQty=10, itemName=Sample two, itemPrice=150.0, orderDetailsEntities=<uninitialized>}
+19:10:26.871 [http-nio-8081-exec-4] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.ItemEntity{itemID=1, itemQty=17, itemName=Sample one, itemPrice=200.0, orderDetailsEntities=<uninitialized>}
+19:10:26.872 [http-nio-8081-exec-4] DEBUG o.s.orm.jpa.JpaTransactionManager -- Closing JPA EntityManager [SessionImpl(481320894<open>)] after transaction
+19:10:26.873 [http-nio-8081-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Using 'application/json', given [application/json, text/javascript, */*;q=0.01] and supported [application/json]
+19:10:26.873 [http-nio-8081-exec-4] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Writing [[ItemDto(itemID=1, itemName=Sample one, itemPrice=200.0, itemQty=17), ItemDto(itemID=2, itemName=Sam (truncated)...]
+19:10:26.874 [http-nio-8081-exec-4] DEBUG o.s.web.servlet.DispatcherServlet -- Completed 200 OK
+19:10:34.091 [http-nio-8081-exec-6] DEBUG o.s.web.servlet.DispatcherServlet -- GET "/PTOBackendv2/api/v2/customerController?customerID=2", parameters={masked}
+19:10:34.092 [http-nio-8081-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping -- Mapped to lk.ijse.ptobackendv2.controller.CustomerController#getAllCustomers()
+19:10:34.094 [http-nio-8081-exec-6] INFO  l.i.p.controller.CustomerController -- GET Request Received
+19:10:34.094 [http-nio-8081-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager -- Creating new transaction with name [lk.ijse.ptobackendv2.service.impl.CustomerServiceImpl.loadAllCustomers]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+19:10:34.094 [http-nio-8081-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager -- Opened new EntityManager [SessionImpl(157684977<open>)] for JPA transaction
+19:10:34.095 [http-nio-8081-exec-6] DEBUG o.h.e.t.internal.TransactionImpl -- On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+19:10:34.095 [http-nio-8081-exec-6] DEBUG o.h.e.t.internal.TransactionImpl -- begin
+19:10:34.095 [http-nio-8081-exec-6] DEBUG o.s.j.d.DriverManagerDataSource -- Creating new JDBC DriverManager Connection to [jdbc:mysql://localhost:3306/PTO_V2?createDatabaseIfNotExist=true]
+19:10:34.105 [http-nio-8081-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager -- Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@469ce196]
+19:10:34.105 [http-nio-8081-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(157684977<open>)] for JPA transaction
+19:10:34.105 [http-nio-8081-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:34.105 [http-nio-8081-exec-6] DEBUG org.hibernate.orm.sql.ast.create -- Created new SQL alias : ce1_0
+19:10:34.105 [http-nio-8081-exec-6] DEBUG org.hibernate.orm.sql.ast.create -- Registration of TableGroup [StandardTableGroup(lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11))] with identifierForTableGroup [lk.ijse.ptobackendv2.entity.impl.CustomerEntity] for NavigablePath [lk.ijse.ptobackendv2.entity.impl.CustomerEntity] 
+19:10:34.106 [http-nio-8081-exec-6] DEBUG org.hibernate.orm.results.graph.AST -- DomainResult Graph:
+ \-EntityResultImpl [lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11)]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11).customerAddress]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11).customerName]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11).customerPhoneNumber]
+ |  \-DelayedCollectionFetch [lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11).orders]
+
+19:10:34.106 [http-nio-8081-exec-6] DEBUG org.hibernate.orm.sql.ast.tree -- SQL AST Tree:
+    SelectStatement {
+      FromClause {
+        StandardTableGroup (ce1 : lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11)) {
+          primaryTableReference : Customer as ce1_0
+        }
+      }
+    }
+
+19:10:34.106 [http-nio-8081-exec-6] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+19:10:34.106 [http-nio-8081-exec-6] DEBUG org.hibernate.SQL -- select ce1_0.customerID,ce1_0.customerAddress,ce1_0.customerName,ce1_0.customerPhoneNumber from Customer ce1_0
+19:10:34.108 [http-nio-8081-exec-6] DEBUG org.hibernate.orm.results -- Initializer list:
+	  lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11) -> EntityJoinedFetchInitializer(lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11))@470209620 (SingleTableEntityPersister(lk.ijse.ptobackendv2.entity.impl.CustomerEntity))
+	  lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11).orders -> DelayedCollectionInitializer(lk.ijse.ptobackendv2.entity.impl.CustomerEntity(11).orders)@587023579 (PluralAttribute(lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders))
+
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager -- Initiating transaction commit
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager -- Committing JPA transaction on EntityManager [SessionImpl(157684977<open>)]
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.h.e.t.internal.TransactionImpl -- committing
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.h.e.i.AbstractFlushingEventListener -- Processing flush-time cascades
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.h.e.i.AbstractFlushingEventListener -- Dirty checking collections
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#1], was: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#1] (uninitialized)
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#2], was: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#2] (uninitialized)
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 0 insertions, 0 updates, 0 deletions to 2 objects
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 0 (re)creations, 0 updates, 0 removals to 2 collections
+19:10:34.108 [http-nio-8081-exec-6] DEBUG o.h.internal.util.EntityPrinter -- Listing entities:
+19:10:34.109 [http-nio-8081-exec-6] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.CustomerEntity{customerAddress=No,75,Dambuwa Watta,Ragama, customerID=1, orders=<uninitialized>, customerPhoneNumber=0715744202, customerName=Dasun Nirmal}
+19:10:34.109 [http-nio-8081-exec-6] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.CustomerEntity{customerAddress=No 12, visaka road bambalapitiya colombo 04, customerID=2, orders=<uninitialized>, customerPhoneNumber=0741408093, customerName=Nirasha Nethmini}
+19:10:34.109 [http-nio-8081-exec-6] DEBUG o.s.orm.jpa.JpaTransactionManager -- Closing JPA EntityManager [SessionImpl(157684977<open>)] after transaction
+19:10:34.110 [http-nio-8081-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Using 'application/json', given [application/json, text/javascript, */*;q=0.01] and supported [application/json]
+19:10:34.110 [http-nio-8081-exec-6] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Writing [[CustomerDto(customerID=1, customerName=Dasun Nirmal, customerAddress=No,75,Dambuwa Watta,Ragama, cu (truncated)...]
+19:10:34.111 [http-nio-8081-exec-6] DEBUG o.s.web.servlet.DispatcherServlet -- Completed 200 OK
+19:10:40.777 [http-nio-8081-exec-7] DEBUG o.s.web.servlet.DispatcherServlet -- OPTIONS "/PTOBackendv2/api/v2/orderController", parameters={}
+19:10:40.778 [http-nio-8081-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping -- Mapped to lk.ijse.ptobackendv2.controller.OrderController#saveOrder(CombinedOrderDto)
+19:10:40.779 [http-nio-8081-exec-7] DEBUG o.s.web.servlet.DispatcherServlet -- Completed 200 OK
+19:10:40.784 [http-nio-8081-exec-8] DEBUG o.s.web.servlet.DispatcherServlet -- POST "/PTOBackendv2/api/v2/orderController", parameters={}
+19:10:40.786 [http-nio-8081-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping -- Mapped to lk.ijse.ptobackendv2.controller.OrderController#saveOrder(CombinedOrderDto)
+19:10:40.787 [http-nio-8081-exec-8] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Read "application/json;charset=UTF-8" to [CombinedOrderDto(orderID=4, orderDate=2024, customerID=2, itemID=1, itemName=Sample one, itemPrice=2 (truncated)...]
+19:10:40.787 [http-nio-8081-exec-8] INFO  l.i.p.controller.OrderController -- POST Request Received
+19:10:40.787 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Creating new transaction with name [lk.ijse.ptobackendv2.service.impl.OrderServiceImpl.saveOrder]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+19:10:40.787 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Opened new EntityManager [SessionImpl(1476443827<open>)] for JPA transaction
+19:10:40.788 [http-nio-8081-exec-8] DEBUG o.h.e.t.internal.TransactionImpl -- On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+19:10:40.788 [http-nio-8081-exec-8] DEBUG o.h.e.t.internal.TransactionImpl -- begin
+19:10:40.788 [http-nio-8081-exec-8] DEBUG o.s.j.d.DriverManagerDataSource -- Creating new JDBC DriverManager Connection to [jdbc:mysql://localhost:3306/PTO_V2?createDatabaseIfNotExist=true]
+19:10:40.807 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@4c04c1ae]
+19:10:40.807 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(1476443827<open>)] for JPA transaction
+19:10:40.807 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:40.807 [http-nio-8081-exec-8] DEBUG o.h.j.i.PersistenceUnitUtilImpl -- jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
+19:10:40.807 [http-nio-8081-exec-8] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.808 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL -- select oe1_0.orderID,c1_0.customerID,c1_0.customerAddress,c1_0.customerName,c1_0.customerPhoneNumber,oe1_0.orderDate from Orders oe1_0 left join Customer c1_0 on c1_0.customerID=oe1_0.customerID where oe1_0.orderID=?
+19:10:40.810 [http-nio-8081-exec-8] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.810 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL -- select ce1_0.customerID,ce1_0.customerAddress,ce1_0.customerName,ce1_0.customerPhoneNumber from Customer ce1_0 where ce1_0.customerID=?
+19:10:40.812 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(1476443827<open>)] for JPA transaction
+19:10:40.812 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:40.812 [http-nio-8081-exec-8] DEBUG o.h.j.i.PersistenceUnitUtilImpl -- jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
+19:10:40.812 [http-nio-8081-exec-8] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.812 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL -- select ode1_0.orderDetailsID,ode1_0.customerID,i1_0.itemID,i1_0.itemName,i1_0.itemPrice,i1_0.itemQty,ode1_0.itemName,ode1_0.itemPrice,ode1_0.itemQty,o1_0.orderID,c1_0.customerID,c1_0.customerAddress,c1_0.customerName,c1_0.customerPhoneNumber,o1_0.orderDate,ode1_0.orderDate,ode1_0.orderQty,ode1_0.totalPrice from OrderDetails ode1_0 left join Items i1_0 on i1_0.itemID=ode1_0.itemID left join Orders o1_0 on o1_0.orderID=ode1_0.orderID left join Customer c1_0 on c1_0.customerID=o1_0.customerID where ode1_0.orderDetailsID=?
+19:10:40.814 [http-nio-8081-exec-8] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.814 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL -- select ie1_0.itemID,ie1_0.itemName,ie1_0.itemPrice,ie1_0.itemQty from Items ie1_0 where ie1_0.itemID=?
+19:10:40.815 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(1476443827<open>)] for JPA transaction
+19:10:40.816 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:40.816 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(1476443827<open>)] for JPA transaction
+19:10:40.816 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:40.816 [http-nio-8081-exec-8] DEBUG o.h.e.i.AbstractFlushingEventListener -- Processing flush-time cascades
+19:10:40.817 [http-nio-8081-exec-8] DEBUG o.h.e.i.AbstractFlushingEventListener -- Dirty checking collections
+19:10:40.848 [http-nio-8081-exec-8] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#2], was: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#2] (uninitialized)
+19:10:40.848 [http-nio-8081-exec-8] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#1], was: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#1] (uninitialized)
+19:10:40.849 [http-nio-8081-exec-8] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 2 insertions, 0 updates, 0 deletions to 4 objects
+19:10:40.849 [http-nio-8081-exec-8] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 0 (re)creations, 0 updates, 0 removals to 2 collections
+19:10:40.849 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- Listing entities:
+19:10:40.849 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.ItemEntity{itemID=1, itemQty=17, itemName=Sample one, itemPrice=200.0, orderDetailsEntities=<uninitialized>}
+19:10:40.849 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderEntity{orderDetails=null, orderID=4, orderDate=2024, customer=lk.ijse.ptobackendv2.entity.impl.CustomerEntity#2}
+19:10:40.849 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity{orderDetailsID=4, itemQty=17, item=lk.ijse.ptobackendv2.entity.impl.ItemEntity#1, itemName=Sample one, totalPrice=600.0, customerID=2, orderQty=3, itemPrice=200.0, orderDate=2024, order=lk.ijse.ptobackendv2.entity.impl.OrderEntity#4}
+19:10:40.849 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.CustomerEntity{customerAddress=No 12, visaka road bambalapitiya colombo 04, customerID=2, orders=<uninitialized>, customerPhoneNumber=0741408093, customerName=Nirasha Nethmini}
+19:10:40.849 [http-nio-8081-exec-8] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+19:10:40.849 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL -- select count(*) from Items ie1_0 where ie1_0.itemID=?
+19:10:40.851 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(1476443827<open>)] for JPA transaction
+19:10:40.851 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:40.851 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(1476443827<open>)] for JPA transaction
+19:10:40.851 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:40.851 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(1476443827<open>)] for JPA transaction
+19:10:40.851 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:40.852 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Initiating transaction commit
+19:10:40.852 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Committing JPA transaction on EntityManager [SessionImpl(1476443827<open>)]
+19:10:40.852 [http-nio-8081-exec-8] DEBUG o.h.e.t.internal.TransactionImpl -- committing
+19:10:40.852 [http-nio-8081-exec-8] DEBUG o.h.e.i.AbstractFlushingEventListener -- Processing flush-time cascades
+19:10:40.852 [http-nio-8081-exec-8] DEBUG o.h.e.i.AbstractFlushingEventListener -- Dirty checking collections
+19:10:40.852 [http-nio-8081-exec-8] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#2], was: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#2] (uninitialized)
+19:10:40.852 [http-nio-8081-exec-8] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#1], was: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#1] (uninitialized)
+19:10:40.853 [http-nio-8081-exec-8] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 2 insertions, 1 updates, 0 deletions to 4 objects
+19:10:40.853 [http-nio-8081-exec-8] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 0 (re)creations, 0 updates, 0 removals to 2 collections
+19:10:40.853 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- Listing entities:
+19:10:40.853 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.ItemEntity{itemID=1, itemQty=14, itemName=Sample one, itemPrice=200.0, orderDetailsEntities=<uninitialized>}
+19:10:40.853 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderEntity{orderDetails=null, orderID=4, orderDate=2024, customer=lk.ijse.ptobackendv2.entity.impl.CustomerEntity#2}
+19:10:40.853 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity{orderDetailsID=4, itemQty=17, item=lk.ijse.ptobackendv2.entity.impl.ItemEntity#1, itemName=Sample one, totalPrice=600.0, customerID=2, orderQty=3, itemPrice=200.0, orderDate=2024, order=lk.ijse.ptobackendv2.entity.impl.OrderEntity#4}
+19:10:40.853 [http-nio-8081-exec-8] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.CustomerEntity{customerAddress=No 12, visaka road bambalapitiya colombo 04, customerID=2, orders=<uninitialized>, customerPhoneNumber=0741408093, customerName=Nirasha Nethmini}
+19:10:40.853 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL -- insert into Orders (customerID,orderDate,orderID) values (?,?,?)
+19:10:40.858 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL -- insert into OrderDetails (customerID,itemID,itemName,itemPrice,itemQty,orderID,orderDate,orderQty,totalPrice,orderDetailsID) values (?,?,?,?,?,?,?,?,?,?)
+19:10:40.859 [http-nio-8081-exec-8] DEBUG org.hibernate.SQL -- update Items set itemName=?,itemPrice=?,itemQty=? where itemID=?
+19:10:40.866 [http-nio-8081-exec-8] DEBUG o.s.orm.jpa.JpaTransactionManager -- Closing JPA EntityManager [SessionImpl(1476443827<open>)] after transaction
+19:10:40.866 [http-nio-8081-exec-8] INFO  l.i.p.controller.OrderController -- Order Saved Successfully
+19:10:40.867 [http-nio-8081-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor -- Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+19:10:40.867 [http-nio-8081-exec-8] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor -- Nothing to write: null body
+19:10:40.867 [http-nio-8081-exec-8] DEBUG o.s.web.servlet.DispatcherServlet -- Completed 201 CREATED
+19:10:40.873 [http-nio-8081-exec-9] DEBUG o.s.web.servlet.DispatcherServlet -- GET "/PTOBackendv2/api/v2/orderController", parameters={}
+19:10:40.874 [http-nio-8081-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping -- Mapped to lk.ijse.ptobackendv2.controller.OrderController#getAllItems()
+19:10:40.874 [http-nio-8081-exec-9] INFO  l.i.p.controller.OrderController -- GET Request Received
+19:10:40.875 [http-nio-8081-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager -- Creating new transaction with name [lk.ijse.ptobackendv2.service.impl.OrderServiceImpl.loadAllOrders]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+19:10:40.875 [http-nio-8081-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager -- Opened new EntityManager [SessionImpl(334465083<open>)] for JPA transaction
+19:10:40.875 [http-nio-8081-exec-9] DEBUG o.h.e.t.internal.TransactionImpl -- On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+19:10:40.875 [http-nio-8081-exec-9] DEBUG o.h.e.t.internal.TransactionImpl -- begin
+19:10:40.875 [http-nio-8081-exec-9] DEBUG o.s.j.d.DriverManagerDataSource -- Creating new JDBC DriverManager Connection to [jdbc:mysql://localhost:3306/PTO_V2?createDatabaseIfNotExist=true]
+19:10:40.893 [http-nio-8081-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager -- Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@2c979725]
+19:10:40.894 [http-nio-8081-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager -- Found thread-bound EntityManager [SessionImpl(334465083<open>)] for JPA transaction
+19:10:40.894 [http-nio-8081-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager -- Participating in existing transaction
+19:10:40.894 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.ast.create -- Created new SQL alias : ode1_0
+19:10:40.895 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.ast.create -- Registration of TableGroup [StandardTableGroup(lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12))] with identifierForTableGroup [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity] for NavigablePath [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity] 
+19:10:40.895 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.ast.create -- Registration of TableGroup [org.hibernate.sql.ast.tree.from.LazyTableGroup@57906087] with identifierForTableGroup [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).item] for NavigablePath [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).item] 
+19:10:40.895 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.ast.create -- Registration of TableGroup [org.hibernate.sql.ast.tree.from.LazyTableGroup@3af21920] with identifierForTableGroup [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).order] for NavigablePath [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).order] 
+19:10:40.895 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.results.graph.AST -- DomainResult Graph:
+ \-EntityResultImpl [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12)]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).customerID]
+ |  +-CircularFetchImpl [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).item]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).itemName]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).itemPrice]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).itemQty]
+ |  +-CircularFetchImpl [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).order]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).orderDate]
+ |  +-BasicFetch [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).orderQty]
+ |  \-BasicFetch [lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).totalPrice]
+
+19:10:40.896 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.ast.tree -- SQL AST Tree:
+    SelectStatement {
+      FromClause {
+        StandardTableGroup (ode1 : lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12)) {
+          primaryTableReference : OrderDetails as ode1_0
+          TableGroupJoins {
+            left  join LazyTableGroup (i1 : lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).item) {
+            }
+            left  join LazyTableGroup (o1 : lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).order) {
+            }
+          }
+        }
+      }
+    }
+
+19:10:40.896 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = NORMAL
+19:10:40.896 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL -- select ode1_0.orderDetailsID,ode1_0.customerID,ode1_0.itemID,ode1_0.itemName,ode1_0.itemPrice,ode1_0.itemQty,ode1_0.orderID,ode1_0.orderDate,ode1_0.orderQty,ode1_0.totalPrice from OrderDetails ode1_0
+19:10:40.897 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.results -- Initializer list:
+	  lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).order -> EntitySelectFetchInitializer(lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).order)@170799641 (ToOneAttributeMapping(NavigableRole[lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity.order])@598388087)
+	  lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).item -> EntitySelectFetchInitializer(lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12).item)@549388645 (ToOneAttributeMapping(NavigableRole[lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity.item])@1822083303)
+	  lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12) -> EntityJoinedFetchInitializer(lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity(12))@472016542 (SingleTableEntityPersister(lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity))
+
+19:10:40.897 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.897 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL -- select ie1_0.itemID,ie1_0.itemName,ie1_0.itemPrice,ie1_0.itemQty from Items ie1_0 where ie1_0.itemID=?
+19:10:40.898 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.898 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL -- select oe1_0.orderID,c1_0.customerID,c1_0.customerAddress,c1_0.customerName,c1_0.customerPhoneNumber,oe1_0.orderDate from Orders oe1_0 left join Customer c1_0 on c1_0.customerID=oe1_0.customerID where oe1_0.orderID=?
+19:10:40.900 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.900 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL -- select oe1_0.orderID,c1_0.customerID,c1_0.customerAddress,c1_0.customerName,c1_0.customerPhoneNumber,oe1_0.orderDate from Orders oe1_0 left join Customer c1_0 on c1_0.customerID=oe1_0.customerID where oe1_0.orderID=?
+19:10:40.900 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.901 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL -- select ie1_0.itemID,ie1_0.itemName,ie1_0.itemPrice,ie1_0.itemQty from Items ie1_0 where ie1_0.itemID=?
+19:10:40.901 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.901 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL -- select oe1_0.orderID,c1_0.customerID,c1_0.customerAddress,c1_0.customerName,c1_0.customerPhoneNumber,oe1_0.orderDate from Orders oe1_0 left join Customer c1_0 on c1_0.customerID=oe1_0.customerID where oe1_0.orderID=?
+19:10:40.902 [http-nio-8081-exec-9] DEBUG org.hibernate.orm.sql.exec -- Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+19:10:40.902 [http-nio-8081-exec-9] DEBUG org.hibernate.SQL -- select oe1_0.orderID,c1_0.customerID,c1_0.customerAddress,c1_0.customerName,c1_0.customerPhoneNumber,oe1_0.orderDate from Orders oe1_0 left join Customer c1_0 on c1_0.customerID=oe1_0.customerID where oe1_0.orderID=?
+19:10:40.904 [http-nio-8081-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager -- Initiating transaction commit
+19:10:40.904 [http-nio-8081-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager -- Committing JPA transaction on EntityManager [SessionImpl(334465083<open>)]
+19:10:40.904 [http-nio-8081-exec-9] DEBUG o.h.e.t.internal.TransactionImpl -- committing
+19:10:40.904 [http-nio-8081-exec-9] DEBUG o.h.e.i.AbstractFlushingEventListener -- Processing flush-time cascades
+19:10:40.905 [http-nio-8081-exec-9] DEBUG o.h.e.i.AbstractFlushingEventListener -- Dirty checking collections
+19:10:40.905 [http-nio-8081-exec-9] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#1], was: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#1] (uninitialized)
+19:10:40.905 [http-nio-8081-exec-9] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#1], was: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#1] (uninitialized)
+19:10:40.905 [http-nio-8081-exec-9] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.OrderEntity.orderDetails#1], was: [lk.ijse.ptobackendv2.entity.impl.OrderEntity.orderDetails#1] (uninitialized)
+19:10:40.905 [http-nio-8081-exec-9] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.OrderEntity.orderDetails#2], was: [lk.ijse.ptobackendv2.entity.impl.OrderEntity.orderDetails#2] (uninitialized)
+19:10:40.905 [http-nio-8081-exec-9] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#2], was: [lk.ijse.ptobackendv2.entity.impl.ItemEntity.orderDetailsEntities#2] (uninitialized)
+19:10:40.905 [http-nio-8081-exec-9] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.OrderEntity.orderDetails#3], was: [lk.ijse.ptobackendv2.entity.impl.OrderEntity.orderDetails#3] (uninitialized)
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#2], was: [lk.ijse.ptobackendv2.entity.impl.CustomerEntity.orders#2] (uninitialized)
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.engine.internal.Collections -- Collection found: [lk.ijse.ptobackendv2.entity.impl.OrderEntity.orderDetails#4], was: [lk.ijse.ptobackendv2.entity.impl.OrderEntity.orderDetails#4] (uninitialized)
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 0 insertions, 0 updates, 0 deletions to 12 objects
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.e.i.AbstractFlushingEventListener -- Flushed: 0 (re)creations, 0 updates, 0 removals to 8 collections
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- Listing entities:
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.ItemEntity{itemID=2, itemQty=10, itemName=Sample two, itemPrice=150.0, orderDetailsEntities=<uninitialized>}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.ItemEntity{itemID=1, itemQty=14, itemName=Sample one, itemPrice=200.0, orderDetailsEntities=<uninitialized>}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderEntity{orderDetails=<uninitialized>, orderID=4, orderDate=2024, customer=lk.ijse.ptobackendv2.entity.impl.CustomerEntity#2}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity{orderDetailsID=4, itemQty=17, item=lk.ijse.ptobackendv2.entity.impl.ItemEntity#1, itemName=Sample one, totalPrice=600.0, customerID=2, orderQty=3, itemPrice=200.0, orderDate=2024, order=lk.ijse.ptobackendv2.entity.impl.OrderEntity#4}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderEntity{orderDetails=<uninitialized>, orderID=2, orderDate=2024, customer=lk.ijse.ptobackendv2.entity.impl.CustomerEntity#1}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.CustomerEntity{customerAddress=No,75,Dambuwa Watta,Ragama, customerID=1, orders=<uninitialized>, customerPhoneNumber=0715744202, customerName=Dasun Nirmal}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderEntity{orderDetails=<uninitialized>, orderID=3, orderDate=2024, customer=lk.ijse.ptobackendv2.entity.impl.CustomerEntity#1}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity{orderDetailsID=1, itemQty=18, item=lk.ijse.ptobackendv2.entity.impl.ItemEntity#1, itemName=Sample, totalPrice=48.0, customerID=1, orderQty=2, itemPrice=24.0, orderDate=2024, order=lk.ijse.ptobackendv2.entity.impl.OrderEntity#1}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.CustomerEntity{customerAddress=No 12, visaka road bambalapitiya colombo 04, customerID=2, orders=<uninitialized>, customerPhoneNumber=0741408093, customerName=Nirasha Nethmini}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderEntity{orderDetails=<uninitialized>, orderID=1, orderDate=2024, customer=lk.ijse.ptobackendv2.entity.impl.CustomerEntity#1}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity{orderDetailsID=3, itemQty=12, item=lk.ijse.ptobackendv2.entity.impl.ItemEntity#2, itemName=Sample two, totalPrice=300.0, customerID=1, orderQty=2, itemPrice=150.0, orderDate=2024, order=lk.ijse.ptobackendv2.entity.impl.OrderEntity#3}
+19:10:40.906 [http-nio-8081-exec-9] DEBUG o.h.internal.util.EntityPrinter -- lk.ijse.ptobackendv2.entity.impl.OrderDetailsEntity{orderDetailsID=2, itemQty=17, item=lk.ijse.ptobackendv2.entity.impl.ItemEntity#1, itemName=Sample one, totalPrice=200.0, customerID=1, orderQty=1, itemPrice=200.0, orderDate=2024, order=lk.ijse.ptobackendv2.entity.impl.OrderEntity#2}
+19:10:40.907 [http-nio-8081-exec-9] DEBUG o.s.orm.jpa.JpaTransactionManager -- Closing JPA EntityManager [SessionImpl(334465083<open>)] after transaction
+19:10:40.908 [http-nio-8081-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Using 'application/json', given [application/json, text/javascript, */*;q=0.01] and supported [application/json]
+19:10:40.908 [http-nio-8081-exec-9] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor -- Writing [[CombinedOrderDto(orderID=1, orderDate=2024, customerID=1, itemID=1, itemName=Sample, itemPrice=24.0 (truncated)...]
+19:10:40.909 [http-nio-8081-exec-9] DEBUG o.s.web.servlet.DispatcherServlet -- Completed 200 OK
