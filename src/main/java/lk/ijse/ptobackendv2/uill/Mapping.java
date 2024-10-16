@@ -18,8 +18,6 @@ import java.util.List;
 public class Mapping {
     @Autowired
     private ModelMapper modelMapper;
-    @Autowired
-    private ItemDao itemDao;
 
     /*customer mapping*/
     public CustomerEntity toCustomerEntity(CustomerDto customerDto) {
@@ -47,13 +45,6 @@ public class Mapping {
     public OrderEntity toOrderEntity(OrderDto orderDto) {
         return modelMapper.map(orderDto, OrderEntity.class);
     }
-    public OrderDto toOrderDto(OrderEntity orderEntity) {
-        return modelMapper.map(orderEntity, OrderDto.class);
-    }
-
-    public List<OrderDto> toOrderDtoList(List<OrderEntity> orderEntityList) {
-        return modelMapper.map(orderEntityList, new TypeToken<List<OrderDto>>() {}.getType());
-    }
 
     /*order details mapping*/
     public OrderDetailsEntity toOrderDetailsEntity(OrderDetailsDto orderDetailsDto) {
@@ -62,11 +53,6 @@ public class Mapping {
     public CombinedOrderDto toOrderDetailsDto(OrderDetailsEntity orderDetailsEntity) {
         return modelMapper.map(orderDetailsEntity, CombinedOrderDto.class);
     }
-
-    public List<OrderDetailsDto> toOrderDetailsDtoList(List<OrderDetailsEntity> orderDetailsEntities) {
-        return modelMapper.map(orderDetailsEntities, new TypeToken<List<OrderDetailsDto>>() {}.getType());
-    }
-
     public List<CombinedOrderDto> toOrderDetailsDtoLists(List<OrderDetailsEntity> orderDetailsEntities) {
         return modelMapper.map(orderDetailsEntities, new TypeToken<List<CombinedOrderDto>>() {}.getType());
     }
