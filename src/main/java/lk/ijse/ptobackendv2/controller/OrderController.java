@@ -4,6 +4,7 @@ import lk.ijse.ptobackendv2.dto.impl.CombinedOrderDto;
 import lk.ijse.ptobackendv2.dto.impl.OrderDto;
 import lk.ijse.ptobackendv2.exception.DataPersistException;
 import lk.ijse.ptobackendv2.exception.ItemNotFoundException;
+import lk.ijse.ptobackendv2.exception.OrderNotFoundException;
 import lk.ijse.ptobackendv2.service.OrderService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,7 @@ public class OrderController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<CombinedOrderDto> getAllItems() {
+    public List<CombinedOrderDto> getAllOrders() {
         logger.info("GET Request Received");
         return orderService.loadAllOrders();
     }
@@ -57,8 +58,8 @@ public class OrderController {
         try {
             orderService.deleteItems(orderID,itemID,orderQty);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ItemNotFoundException e) {
-            logger.error("Item not found: ", e);
+        } catch (OrderNotFoundException e) {
+            logger.error("Order not found: ", e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -77,8 +78,8 @@ public class OrderController {
         try {
             orderService.updateOrder(orderID, itemID, qtyOnHand, combinedOrderDto);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } catch (ItemNotFoundException e) {
-            logger.error("Item not found: ", e);
+        } catch (OrderNotFoundException e) {
+            logger.error("Order not found: ", e);
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
